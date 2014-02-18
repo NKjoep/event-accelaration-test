@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Event Acceleration Test</title>
+  <style type='text/css'>
+		body {
+			background-image: url("http://static.neovov.com/neoblog/img/2013/03/svg/octocat.svg");
+			background-position: left top;
+			background-repeat: no-repeat;
+		}
+		.pointer {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			background-color: red;
+			border-radius: 10px;
+			width: 4%;
+			height: 4%;
+			z-index: 1;
+			transition: top 300ms, bottom 300ms, width 300ms, height 300ms, left 300ms;
+			-webkit-transition-property: top, bottom, width, height, left;
+			-webkit-transition-duration: 300ms;
+
+		}
+		#eye1, #eye2 {
+
+			background-color: #fff;
+			position: absolute;
+			top: 168px;
+			width: 60px;
+			height: 85px;
+			border-radius: 50%;
+		}
+		#eye1 {
+			left: 209px;
+		}
+		#eye2 {
+			left: 366px;
+		}
+		.pointer {
+			position: absolute;
+			top: 25%;
+			bottom: auto;
+			left: 50%;
+			right: auto;
+			width: 40%;
+			height: 70%;
+			border-radius: 100%;
+			background-color: #ad5c51;
+			min-width: 63%;
+		}
+  </style>
+
+	<script type='text/javascript'>
+		window.onload=function(){
+			var pointerEl1 = document.getElementsByClassName('pointer')[0];
+			var pointerEl2 = document.getElementsByClassName('pointer')[1];
+
+			window.addEventListener("devicemotion", function(event) {
+				//get the raw values
+					var x = event.accelerationIncludingGravity.x;
+					var y = event.accelerationIncludingGravity.y;
+					var z = event.accelerationIncludingGravity.z;
+
+				//normalize
+					var xp = Math.floor(10 + x);
+					var yp = Math.floor(10 - y);
+					var zp = Math.abs(z);
+
+				//get percents values
+					xp = xp*100/20;
+					yp = yp*100/20;
+
+				//print the values
+					//coordsEl.innerHTML = 'Move your device<br />x axis: ' +x + '<br />y axis: ' + y + '<br />z axis: ' + zp;
+
+				//set the styles to the pointer
+					pointerEl1.style.left = xp-30 + "%";
+					pointerEl1.style.top = yp-20 + "%";
+					pointerEl1.style.width = Math.floor(1 + (zp)) + "%";
+					//pointerEl1.style.height =  pointerEl1.style.width;
+
+					pointerEl2.style.left = xp-30 + "%";
+					pointerEl2.style.top = yp-20 + "%";
+					pointerEl2.style.width = Math.floor(1 + (zp)) + "%";
+					//pointerEl2.style.height =  pointerEl2.style.width;
+
+			}, true);
+		}
+	</script>
+</head>
+<body>
+	<div id="eye1"><div class="pointer"></div></div>
+	<div id="eye2"><div class="pointer"></div></div>
+
+	<a href="https://github.com/NKjoep/event-accelaration-test">
+		<img
+			style="position: absolute; top: 0; right: 0; border: 0;"
+			src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"
+			alt="Fork me on GitHub" />
+	</a>
+</body>
+</html>
