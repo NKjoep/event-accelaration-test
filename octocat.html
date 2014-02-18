@@ -25,10 +25,8 @@
 			transition: top 300ms, bottom 300ms, width 300ms, height 300ms, left 300ms;
 			-webkit-transition-property: top, bottom, width, height, left;
 			-webkit-transition-duration: 300ms;
-
 		}
 		#eye1, #eye2 {
-
 			background-color: #fff;
 			position: absolute;
 			top: 168px;
@@ -46,7 +44,7 @@
 			position: absolute;
 			top: 25%;
 			bottom: auto;
-			left: 50%;
+			left: 20%;
 			right: auto;
 			width: 40%;
 			height: 70%;
@@ -80,14 +78,22 @@
 					//coordsEl.innerHTML = 'Move your device<br />x axis: ' +x + '<br />y axis: ' + y + '<br />z axis: ' + zp;
 
 				//set the styles to the pointer
-					pointerEl1.style.left = xp-30 + "%";
-					pointerEl1.style.top = yp-20 + "%";
-					pointerEl1.style.width = Math.floor(1 + (zp)) + "%";
+					var top = (yp-60);
+							top = top > 0 ? top : -4 ;
+
+					var left = xp - 30;
+							left = left > 0 ? left : -4;
+
+					var width = Math.floor(1 + (zp))
+
+					pointerEl1.style.left = left + "%";
+					pointerEl1.style.top = top + "%";
+					pointerEl1.style.width = width + "%";
 					//pointerEl1.style.height =  pointerEl1.style.width;
 
-					pointerEl2.style.left = xp-30 + "%";
-					pointerEl2.style.top = yp-20 + "%";
-					pointerEl2.style.width = Math.floor(1 + (zp)) + "%";
+					pointerEl2.style.left = left + "%";
+					pointerEl2.style.top = top + "%";
+					pointerEl2.style.width = width + "%";
 					//pointerEl2.style.height =  pointerEl2.style.width;
 
 			}, true);
