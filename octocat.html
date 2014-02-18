@@ -4,10 +4,14 @@
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>Event Acceleration Test</title>
   <style type='text/css'>
-		body {
+		#octocat {
 			background-image: url("http://static.neovov.com/neoblog/img/2013/03/svg/octocat.svg");
 			background-position: left top;
 			background-repeat: no-repeat;
+			position: relative;
+			width: 635px;
+			height: 560px;
+			margin: 0 auto;
 		}
 		.pointer {
 			position: absolute;
@@ -91,9 +95,10 @@
 	</script>
 </head>
 <body>
-	<div id="eye1"><div class="pointer"></div></div>
-	<div id="eye2"><div class="pointer"></div></div>
-
+	<div id="octocat">
+		<div id="eye1"><div class="pointer"></div></div>
+		<div id="eye2"><div class="pointer"></div></div>
+	</div>
 	<a href="https://github.com/NKjoep/event-accelaration-test">
 		<img
 			style="position: absolute; top: 0; right: 0; border: 0;"
